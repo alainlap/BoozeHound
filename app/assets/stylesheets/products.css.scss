@@ -1,3 +1,73 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+  background: #EEEEEE;
+  font-family: 'Roboto Condensed', 'Helvetica Neue' 'Helvetica', 'Tahoma', sans-serif;
+  color: #000000;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 0 0 10px 0;
+}
+
+h2 {
+  margin: 0 0 25px 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+p {
+  margin: 0;
+}
+
+a:link,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.inner {
+  background: #FFFFFF;
+  padding: 20px 20px;
+  text-align: center;
+  margin: 25px 0;
+}
+
+
+
+
+
+/* CSS for centering content */
+
+.outer {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto; 
+  padding: 40px 0;
+  width: 600px;
+}
+
+.col {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: left;
+	padding: 10px;
+}

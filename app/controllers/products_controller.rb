@@ -3,12 +3,48 @@ require 'open-uri'
 class ProductsController < ApplicationController
 
 	def index
-    products_json = open('http://lcboapi.com/products/').read
-    @products = JSON.parse(products_json)
+    # products_json = open('http://lcboapi.com/products/').read
+    # @products = JSON.parse(products_json)
   end
 
+  def most_expensive_alcohol
+  	expensive = Product.where("price_per_liter_of_alcohol_in_cents > 0").order(:price_per_liter_of_alcohol_in_cents)
+  	expensive = expensive.where("image_thumb_url IS NOT NULL")
+  	expensive = expensive.last(1)
+  end
 
+  def cheapest_alcohol
+  	cheapest = Product.where("price_per_liter_of_alcohol_in_cents > 0").order(:price_per_liter_of_alcohol_in_cents)
+  	cheapest = cheapest.where("image_thumb_url IS NOT NULL")
+  	cheapest = cheapest.first(1)
+  end
 
+  def refresh_data
+  	
+  	puts "refreshing data!".bg_brown
+  	
+  	fetch.each do |products|
+  		products['result'].each do |product|
+  			
+  			refresh = Product.new(
+  				lcbo_id: product['id'],
+					name: product['name'],
+					price_in_cents: product['price_in_cents'],
+					primary_category: product['primary_category'],
+					secondary_category: product['secondary_category'],
+					origin: product['origin'],
+					price_per_liter_of_alcohol_in_cents: product['price_per_liter_of_alcohol_in_cents'],
+					producer_name: product['producer_name'],
+					image_thumb_url: product['image_thumb_url'],
+					image_url: product['image_url']
+				)
+
+  			puts "Saving #{product['name']}!".bg_cyan
+
+				refresh.save
+  		end
+  	end
+  end
 
 	def fetch
 		
@@ -17,15 +53,17 @@ class ProductsController < ApplicationController
 		page = 1
 
 		until end_of_list
-			puts "Parsing page #{page}!".bg_green
+			
+			puts "Fetching page #{page}.".bg_green
+
 			products_json = open("http://lcboapi.com/products?page=#{page}&per_page=100").read
 	    products = JSON.parse(products_json)
 
-    	@all_products << products
+    	@all_products << products.clone
 
     	puts "End of list!".bg_red if products['pager']['is_final_page']
     	end_of_list = products['pager']['is_final_page']
-    	break if products['pager']['current_page'] == 1 # safety break
+    	# break if products['pager']['current_page'] == 1 # safety break
     	page += 1
   	end
   	@all_products
@@ -35,7 +73,7 @@ class ProductsController < ApplicationController
   	price_in_cents/100.0
   end
 
-  helper_method :format_price, :fetch
+  helper_method :format_price, :fetch, :refresh_data, :cheapest_alcohol, :most_expensive_alcohol
 
 end
 

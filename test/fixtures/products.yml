@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lcbo_id: 1
+  name: MyString
+  price_in_cents: 1
+  primary_category: MyString
+  secondary_category: MyString
+  origin: MyString
+  price_per_liter_of_alcohol_in_cents: 1
+  producer_name: MyString
+  image_thumb_url: MyString
+  image_url: MyString
+
+two:
+  lcbo_id: 1
+  name: MyString
+  price_in_cents: 1
+  primary_category: MyString
+  secondary_category: MyString
+  origin: MyString
+  price_per_liter_of_alcohol_in_cents: 1
+  producer_name: MyString
+  image_thumb_url: MyString
+  image_url: MyString

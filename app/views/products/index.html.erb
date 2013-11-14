@@ -1,13 +1,41 @@
-<h1>Products List</h1>
 
-<% fetch.each do |products| %>
-	<% products['result'].each do |product| %>
-	  <p>
-	    <%= image_tag product['image_thumb_url'] %>
-	    <%= link_to product['name'], product_path(product['id']) %>
-	    <%= format_price product['price_in_cents'] %>
-	    <%= product['primary_category'] %>
-	    <%= product['price_per_liter_of_alcohol_in_cents'] %>
-	  </p>
-	<% end %>
-<% end %>
+
+
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+
+			<h1>Cheapest buzz at the LCBO</h1>
+
+			<% cheapest_alcohol.each do |x| %>
+
+				<div class="col"><%= image_tag x.image_thumb_url %></div>
+				<div class="col">
+					<p><strong><%= x.name %></strong></p>
+					<p><%= x.producer_name %> | <%= x.origin %></p>
+					<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+					<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+				</div>
+
+			<% end %>
+		</div>
+		
+    <div class="inner">
+
+			<h1>Most expensive buzz at the LCBO</h1>
+
+			<% most_expensive_alcohol.each do |x| %>
+
+				<div class="col"><%= image_tag x.image_thumb_url %></div>
+				<div class="col">
+					<p><strong><%= x.name %></strong></p>
+					<p><%= x.producer_name %> | <%= x.origin %></p>
+					<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+					<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+				</div>
+
+			<% end %>
+
+		</div>
+	</div>
+</div>
