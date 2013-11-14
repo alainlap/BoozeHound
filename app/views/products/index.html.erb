@@ -1,0 +1,9 @@
+<% products = api  %>
+<% products['result'].each do |product| %>
+  <section>
+    <%= link_to product['name'], product_path(product['id']) %>
+    <%= format_price product['price_in_cents'] %>
+    <%= product['primary_category'] %>
+    <%= product['price_per_liter_of_alcohol_in_cents'] %>
+  </section>
+<% end %>
