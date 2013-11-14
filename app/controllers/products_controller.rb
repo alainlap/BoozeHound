@@ -7,14 +7,34 @@ class ProductsController < ApplicationController
     # @products = JSON.parse(products_json)
   end
 
-  def most_expensive_alcohol
-  	expensive = Product.where("price_per_liter_of_alcohol_in_cents > 0").order(:price_per_liter_of_alcohol_in_cents)
+  def types
+		Product.select(:primary_category).distinct
+  end
+
+  def beer
+  	products = Product.where(primary_category: "Beer")
+  end
+
+  def spirit
+  	products = Product.where(primary_category: "Spirits")
+  end
+
+  def wine
+  	products = Product.where(primary_category: "Wine")
+  end
+
+  def cider
+  	products = Product.where(primary_category: "Ciders")
+  end
+
+	def most_expensive(products)
+  	expensive = products.where("price_per_liter_of_alcohol_in_cents > 0").order(:price_per_liter_of_alcohol_in_cents)
   	expensive = expensive.where("image_thumb_url IS NOT NULL")
   	expensive = expensive.last(1)
   end
 
-  def cheapest_alcohol
-  	cheapest = Product.where("price_per_liter_of_alcohol_in_cents > 0").order(:price_per_liter_of_alcohol_in_cents)
+  def cheapest(products)
+  	cheapest = products.where("price_per_liter_of_alcohol_in_cents > 0").order(:price_per_liter_of_alcohol_in_cents)
   	cheapest = cheapest.where("image_thumb_url IS NOT NULL")
   	cheapest = cheapest.first(1)
   end
@@ -73,7 +93,7 @@ class ProductsController < ApplicationController
   	price_in_cents/100.0
   end
 
-  helper_method :format_price, :fetch, :refresh_data, :cheapest_alcohol, :most_expensive_alcohol
+  helper_method :format_price, :fetch, :refresh_data, :cheapest, :most_expensive, :types, :beer, :wine, :spirit, :cooler, :cider
 
 end
 

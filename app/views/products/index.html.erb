@@ -1,41 +1,118 @@
 
-
-
 <div class="outer">
-  <div class="middle">
-    <div class="inner">
-
-			<h1>Cheapest buzz at the LCBO</h1>
-
-			<% cheapest_alcohol.each do |x| %>
-
-				<div class="col"><%= image_tag x.image_thumb_url %></div>
-				<div class="col">
-					<p><strong><%= x.name %></strong></p>
-					<p><%= x.producer_name %> | <%= x.origin %></p>
-					<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
-					<p><%= x.primary_category %> | <%= x.secondary_category %></p>
-				</div>
-
-			<% end %>
-		</div>
-		
-    <div class="inner">
-
-			<h1>Most expensive buzz at the LCBO</h1>
-
-			<% most_expensive_alcohol.each do |x| %>
-
-				<div class="col"><%= image_tag x.image_thumb_url %></div>
-				<div class="col">
-					<p><strong><%= x.name %></strong></p>
-					<p><%= x.producer_name %> | <%= x.origin %></p>
-					<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
-					<p><%= x.primary_category %> | <%= x.secondary_category %></p>
-				</div>
-
-			<% end %>
-
-		</div>
+    
+  <div class="inner">
+		<h1>Cheapest beer at the LCBO</h1>
+		<% cheapest(beer).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
 	</div>
+
+	<div class="inner">
+		<h1>Most expensive beer at the LCBO</h1>
+		<% most_expensive(beer).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="inner">
+		<h1>Cheapest wine at the LCBO</h1>
+		<% cheapest(wine).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="inner">
+		<h1>Most expensive wine at the LCBO</h1>
+		<% most_expensive(wine).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
+	</div>
+
+<div class="inner">
+		<h1>Cheapest spirit at the LCBO</h1>
+		<% cheapest(spirit).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="inner">
+		<h1>Most expensive spirit at the LCBO</h1>
+		<% most_expensive(spirit).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="inner">
+		<h1>Cheapest cider at the LCBO</h1>
+		<% cheapest(cider).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="inner">
+		<h1>Most expensive cider at the LCBO</h1>
+		<% most_expensive(cider).each do |x| %>
+			<div class="col"><%= image_tag x.image_thumb_url %></div>
+			<div class="col">
+				<p><strong><%= x.name %></strong></p>
+				<p><%= x.producer_name %></p>
+				<p><%= x.origin %></p>
+				<p>$ <%= format_price(x.price_per_liter_of_alcohol_in_cents)%> / L alcohol</p>
+				<p><%= x.primary_category %> | <%= x.secondary_category %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="spacer"></div>
+	<div class="spacer"></div>
 </div>
