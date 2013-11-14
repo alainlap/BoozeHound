@@ -1,9 +1,13 @@
-<% products = api  %>
-<% products['result'].each do |product| %>
-  <section>
-    <%= link_to product['name'], product_path(product['id']) %>
-    <%= format_price product['price_in_cents'] %>
-    <%= product['primary_category'] %>
-    <%= product['price_per_liter_of_alcohol_in_cents'] %>
-  </section>
+<h1>Products List</h1>
+
+<% fetch.each do |products| %>
+	<% products['result'].each do |product| %>
+	  <p>
+	    <%= image_tag product['image_thumb_url'] %>
+	    <%= link_to product['name'], product_path(product['id']) %>
+	    <%= format_price product['price_in_cents'] %>
+	    <%= product['primary_category'] %>
+	    <%= product['price_per_liter_of_alcohol_in_cents'] %>
+	  </p>
+	<% end %>
 <% end %>
